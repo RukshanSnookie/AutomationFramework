@@ -2,6 +2,7 @@ package com.ui.pages;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import com.constants.Browser;
 import static com.constants.Env.*;
@@ -16,10 +17,15 @@ public final class HomePage extends BrowserUtility {
 
 	private static final By SIGN_IN_LOCATOR = By.xpath("//a[contains(text(),\"Sign in\")]");
 
-	public HomePage(Browser browserName) {
-		super(browserName); // calling parent class constructor from the child class constructor
+	public HomePage(Browser browserName, boolean isHeadless) {
+		super(browserName, isHeadless); // calling parent class constructor from the child class constructor
 		goToWebSite(readJson(QA).getUrl());
 
+	}
+
+	public HomePage(WebDriver lambdaDriver) {
+		super(lambdaDriver);
+		goToWebSite(readJson(QA).getUrl());
 	}
 
 	public LoginPage goToLoginPage() {

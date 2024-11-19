@@ -2,7 +2,6 @@ package com.utility;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,8 +13,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import com.constants.Browser;
 
@@ -42,6 +44,43 @@ public abstract class BrowserUtility {
 			driver.set(new EdgeDriver());
 		} else if (browserName.equalsIgnoreCase("Firefox")) {
 			driver.set(new FirefoxDriver());
+		} else {
+			logger.info("Not launched " + browserName);
+			System.err.println("Enter a valid browser");
+		}
+	}
+
+	public BrowserUtility(Browser browserName, boolean isHeadless) {
+		logger.info("Launching " + browserName);
+
+		if (browserName == Browser.CHROME) {
+			if (isHeadless) {
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless=old"); // headless
+				options.addArguments("--window-size=1920,1080");
+				driver.set(new ChromeDriver(options));
+			} else {
+				driver.set(new ChromeDriver());
+			}
+		} else if (browserName == Browser.EDGE) {
+			if (isHeadless) {
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--headless=old");
+				options.addArguments("disable-gpu");
+				driver.set(new EdgeDriver(options));
+			} else {
+				driver.set(new EdgeDriver());
+			}
+
+		} else if (browserName == Browser.FIREFOX) {
+			if (isHeadless) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless=old");
+				driver.set(new FirefoxDriver(options));
+			} else {
+				driver.set(new FirefoxDriver());
+			}
+
 		} else {
 			logger.info("Not launched " + browserName);
 			System.err.println("Enter a valid browser");
@@ -107,7 +146,7 @@ public abstract class BrowserUtility {
 
 	}
 
-	public void exit() {
+	public static void exit() {
 		driver.get().quit();
 	}
 }
