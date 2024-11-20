@@ -24,6 +24,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: List files to verify the correct path
+      run: |
+        ls -R AutomationFramework
     - name: Running Automation tests with Maven
       working-directory: ./AutomationFramework
       run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
