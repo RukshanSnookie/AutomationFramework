@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         ref: master
     - name: Set up JDK 11
@@ -24,9 +24,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: List files to verify the correct path
-      run: |
-        ls -R
     - name: Running Automation tests with Maven
       run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
 
