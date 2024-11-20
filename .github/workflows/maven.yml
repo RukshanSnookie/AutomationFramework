@@ -13,7 +13,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      PROJECT_PATH: ./AutomationFramework
+      TEST_DATA_PATH: '/home/runner/work/AutomationFramework/testData'
       
     steps:
     - name: checkout code
@@ -27,8 +27,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Running Automation tests with Maven
-      working-directory: ${{ github.workspace }}/${{ env.PROJECT_PATH }}
-      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
+      run: |
+        mvn test -X \
+          -Dbrowser=chrome \
+          -DisLambdaTest=true \
+          -DisHeadless=false \
+          -Dtest.data.path=${{ env.TEST_DATA_PATH }}
 
     - name: Upload Test Logs
       if: always()
