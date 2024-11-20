@@ -26,9 +26,8 @@ jobs:
         cache: maven
     - name: List files to verify the correct path
       run: |
-        ls -R AutomationFramework
+        ls -R
     - name: Running Automation tests with Maven
-      working-directory: ./AutomationFramework
       run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
 
     - name: Upload Test Logs
