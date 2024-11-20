@@ -25,7 +25,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Running Automation tests with Maven
-      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=true
+      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
 
     - name: Upload Test Logs
       if: always()
@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v4.4.3
       with:
         name: Test Reports
-        path: reports.html
+        path: reports/
 
     - name: Test Execution Status
       run: echo "Test Execution Completed"
