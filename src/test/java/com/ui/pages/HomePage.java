@@ -20,12 +20,14 @@ public final class HomePage extends BrowserUtility {
 	public HomePage(Browser browserName, boolean isHeadless) {
 		super(browserName, isHeadless); // calling parent class constructor from the child class constructor
 		goToWebSite(readJson(QA).getUrl());
+		maximizeWindow();
 
 	}
 
 	public HomePage(WebDriver lambdaDriver) {
 		super(lambdaDriver);
 		goToWebSite(readJson(QA).getUrl());
+		maximizeWindow();
 	}
 
 	public LoginPage goToLoginPage() {

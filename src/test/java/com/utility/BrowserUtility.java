@@ -8,6 +8,7 @@ import java.util.Date;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -119,6 +120,14 @@ public abstract class BrowserUtility {
 		WebElement element = driver.get().findElement(locator);
 		logger.info("Element found and enter text" + textToEnter);
 		element.sendKeys(textToEnter);
+
+	}
+
+	public void enterSpecialKey(By locator, Keys keyToEnter) {
+		logger.info("Finding element with the locator" + locator);
+		WebElement element = driver.get().findElement(locator);
+		logger.info("Element found and press enter key" + keyToEnter);
+		element.sendKeys(keyToEnter);
 
 	}
 
