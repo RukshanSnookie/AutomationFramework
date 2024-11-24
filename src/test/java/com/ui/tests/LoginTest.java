@@ -20,6 +20,7 @@ public class LoginTest extends TestBase {
 
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
 				"Rukshan Malinda");
+		tearDown();
 	}
 
 	@Test(description = "Veryfies if the valid user is able to log in", groups = { "e2e",
@@ -27,6 +28,7 @@ public class LoginTest extends TestBase {
 	public void loginCSVTest(Users user) {
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
 				"Rukshan Malinda");
+		tearDown();
 	}
 
 	@Test(description = "Veryfies if the valid user is able to log in", groups = { "e2e",
@@ -34,6 +36,7 @@ public class LoginTest extends TestBase {
 	public void loginExcelTest(Users user) {
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
 				"Rukshan Malinda");
+		tearDown();
 	}
 
 }

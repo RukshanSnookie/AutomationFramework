@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.ui.pojo.Users;
 import com.utility.LoggerUtility;
 
 @Listeners({ com.ui.listner.TestListner.class })
@@ -23,6 +22,7 @@ public class InvalidLoginTest extends TestBase {
 		assertEquals(
 				homePage.goToLoginPage().logInWithInvalidCredentials(INVALID_EMAIL, INVALID_PASSWORD).getErrorMessage(),
 				"Authentication failed.");
+		tearDown();
 	}
 
 }

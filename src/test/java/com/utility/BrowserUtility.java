@@ -3,7 +3,9 @@ package com.utility;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +35,7 @@ public abstract class BrowserUtility {
 
 	public BrowserUtility(WebDriver driver) {
 		super();
-		this.driver.set(driver);
+		BrowserUtility.driver.set(driver);
 	}
 
 	public BrowserUtility(String browserName) {
@@ -135,6 +137,24 @@ public abstract class BrowserUtility {
 		logger.info("Finding element with the locator" + locator);
 		WebElement element = driver.get().findElement(locator);
 		logger.info("Element found and returning the visible" + element.getText());
+		return element.getText();
+	}
+
+	public List<String> getAllVisibleText(By locator) {
+		logger.info("Finding all elements with the locator" + locator);
+		List<WebElement> elementsList = driver.get().findElements(locator);
+		logger.info("Elements found and returning the visible");
+		List<String> visibleTextList = new ArrayList<>();
+		for (WebElement element : elementsList) {
+			System.out.println(getVisibleText(element));
+			visibleTextList.add(getVisibleText(element));
+		}
+		return visibleTextList;
+	}
+
+	public String getVisibleText(WebElement element) {
+		logger.info("Finding element with the locator" + element);
+		logger.info("Elements found and returning the visible text" + element.getText());
 		return element.getText();
 	}
 
