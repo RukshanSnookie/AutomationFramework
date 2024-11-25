@@ -21,11 +21,13 @@ public class AddAddressesPage extends BrowserUtility {
 
 	private static final By STATE_DROPDOWN_LOCATOR = By.id("id_state");
 
+	private static final By ADDRESS_HEADING = By.tagName("h3");
+
 	public AddAddressesPage(WebDriver driver) {
 		super(driver);
 	}
 
-	public AddAddressesPage saveAddress(AddressPOJO addressPOJO) {
+	public String saveAddress(AddressPOJO addressPOJO) {
 
 		enterText(COMPANY_NAME_TEXTBOX_LOCATOR, addressPOJO.getCompany());
 		enterText(ADDRESS_LINE_1_TEXTBOX_LOCATOR, addressPOJO.getAddressLine1());
@@ -38,10 +40,10 @@ public class AddAddressesPage extends BrowserUtility {
 		enterText(ADDITIONAL_INFORMATION_TEXTAREA_LOCATOR, addressPOJO.getAdditionalInfo());
 		clearText(ADDRESS_TITLE_TEXTBOX_LOCATOR);
 		enterText(ADDRESS_TITLE_TEXTBOX_LOCATOR, addressPOJO.getAddressTitle());
-//		clickOn(SAVE_BUTTON_LOCATOR);
+		clickOn(SAVE_BUTTON_LOCATOR);
+		String newAddress = getVisibleText(ADDRESS_HEADING);
 
-		AddAddressesPage userAddressesPage = new AddAddressesPage(getDriver());
-		return userAddressesPage;
+		return newAddress;
 	}
 
 }

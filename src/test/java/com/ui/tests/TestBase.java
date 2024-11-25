@@ -39,12 +39,12 @@ public class TestBase {
 		return homePage;
 	}
 
-//	@AfterMethod(description = "Closing the browser")
-//	protected void tearDown() {
-//		if (isLambdaTest) {
-//			LambdaTestUtility.quitSession(); // cloud session in lambda
-//		} else {
-//			HomePage.exit(); // local session
-//		}
-//	}
+	@AfterMethod(description = "Closing the browser")
+	protected void tearDown() {
+		if (isLambdaTest) {
+			LambdaTestUtility.quitSession(); // cloud session in lambda
+		} else {
+			HomePage.exit(); // local session
+		}
+	}
 }
