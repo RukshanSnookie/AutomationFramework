@@ -24,6 +24,5 @@ public class SearchProductTest extends TestBase {
 		boolean searchResult = myAccountPage.searchForProduct(SEARCH_TERM)
 				.isSearchTermPresentInProductList(SEARCH_TERM);
 		Assert.assertEquals(searchResult, true);
-		tearDown();
 	}
 }

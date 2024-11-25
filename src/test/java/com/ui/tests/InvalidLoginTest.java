@@ -22,7 +22,6 @@ public class InvalidLoginTest extends TestBase {
 		assertEquals(
 				homePage.goToLoginPage().logInWithInvalidCredentials(INVALID_EMAIL, INVALID_PASSWORD).getErrorMessage(),
 				"Authentication failed.");
-		tearDown();
 	}
 
 }

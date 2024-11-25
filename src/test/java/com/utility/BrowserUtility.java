@@ -21,6 +21,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.constants.Browser;
 
@@ -111,37 +112,53 @@ public abstract class BrowserUtility {
 	}
 
 	public void clickOn(By locator) {
-		logger.info("Finding element with the locator" + locator);
+		logger.info("Finding element with the locator " + locator);
 		WebElement element = driver.get().findElement(locator);
 		logger.info("Element found and performing click");
 		element.click();
 	}
 
 	public void enterText(By locator, String textToEnter) {
-		logger.info("Finding element with the locator" + locator);
+		logger.info("Finding element with the locator " + locator);
 		WebElement element = driver.get().findElement(locator);
 		logger.info("Element found and enter text" + textToEnter);
 		element.sendKeys(textToEnter);
 
 	}
 
+	public void clearText(By textBoxLocator) {
+		logger.info("Finding element with the locator " + textBoxLocator);
+		WebElement element = driver.get().findElement(textBoxLocator);
+		logger.info("Clear the existing text");
+		element.clear();
+
+	}
+
+	public void selectFromDropdown(By dropdownLocator, String optionToSelect) {
+		logger.info("Finding element with the locator " + dropdownLocator);
+		WebElement element = driver.get().findElement(dropdownLocator);
+		Select select = new Select(element);
+		logger.info("Selecting the option: " + optionToSelect);
+		select.selectByValue(optionToSelect);
+	}
+
 	public void enterSpecialKey(By locator, Keys keyToEnter) {
-		logger.info("Finding element with the locator" + locator);
+		logger.info("Finding element with the locator " + locator);
 		WebElement element = driver.get().findElement(locator);
-		logger.info("Element found and press enter key" + keyToEnter);
+		logger.info("Element found and press enter key " + keyToEnter);
 		element.sendKeys(keyToEnter);
 
 	}
 
 	public String getVisibleText(By locator) {
-		logger.info("Finding element with the locator" + locator);
+		logger.info("Finding element with the locator " + locator);
 		WebElement element = driver.get().findElement(locator);
-		logger.info("Element found and returning the visible" + element.getText());
+		logger.info("Element found and returning the visible " + element.getText());
 		return element.getText();
 	}
 
 	public List<String> getAllVisibleText(By locator) {
-		logger.info("Finding all elements with the locator" + locator);
+		logger.info("Finding all elements with the locator " + locator);
 		List<WebElement> elementsList = driver.get().findElements(locator);
 		logger.info("Elements found and returning the visible");
 		List<String> visibleTextList = new ArrayList<>();
@@ -153,8 +170,8 @@ public abstract class BrowserUtility {
 	}
 
 	public String getVisibleText(WebElement element) {
-		logger.info("Finding element with the locator" + element);
-		logger.info("Elements found and returning the visible text" + element.getText());
+		logger.info("Finding element with the locator " + element);
+		logger.info("Elements found and returning the visible text " + element.getText());
 		return element.getText();
 	}
 
