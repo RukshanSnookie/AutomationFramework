@@ -15,7 +15,6 @@ public class SearchResultPage extends BrowserUtility {
 
 	public SearchResultPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getSearchResultsTitle() {
@@ -29,6 +28,12 @@ public class SearchResultPage extends BrowserUtility {
 				.anyMatch(name -> (keywordsList.stream().anyMatch(name.toLowerCase()::contains)));
 
 		return result;
+	}
+
+	public ProductDetailsPage selectFirstproduct(int index) {
+		clickOn(getAllElements(PRODUCt_SEARCH_RESULTS_LOCATOR).get(index));
+		ProductDetailsPage productDetailsPage = new ProductDetailsPage(getDriver());
+		return productDetailsPage;
 	}
 
 }

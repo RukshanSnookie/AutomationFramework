@@ -16,8 +16,9 @@ public class FakeAddressUtility {
 		Faker faker = new Faker(Locale.US);
 
 		AddressPOJO addressPojo = new AddressPOJO(faker.company().name(), faker.address().buildingNumber(),
-				faker.address().streetAddress(), faker.address().city(), "3", "32154", faker.phoneNumber().cellPhone(),
-				faker.phoneNumber().cellPhone(), "other", faker.address().streetName());
+				faker.address().streetAddress(), faker.address().city(), faker.address().state(), "32154",
+				faker.phoneNumber().cellPhone(), faker.phoneNumber().cellPhone(), "other",
+				faker.address().streetName());
 		return addressPojo;
 	}
 }
