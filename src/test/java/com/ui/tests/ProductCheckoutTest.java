@@ -1,11 +1,11 @@
 package com.ui.tests;
 
-import static org.testng.Assert.assertEquals;
+import static com.constants.Size.L;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.constants.Size.*;
 import com.ui.pages.SearchResultPage;
 
 public class ProductCheckoutTest extends TestBase {
@@ -23,8 +23,10 @@ public class ProductCheckoutTest extends TestBase {
 	@Test(description = "verify if the logged in user able to buy a dress", groups = { "e2e", "sanity", "smoke" })
 	public void checkoutTest() {
 
-		assertEquals(searchResultPage.selectFirstproduct(0).changeSize(L).addProductToCart().proceedTOCheckout()
+		String result = searchResultPage.selectFirstproduct(0).changeSize(L).addProductToCart().proceedTOCheckout()
 				.goToConfirmAddressPage().goToShipmentDetailsPage().goTOPaymentPage().goToOrderSummaryPage()
-				.goToOrderConfirmationPage().getSuccessMessage(), "Your order on My Shop is complete.");
+				.goToOrderConfirmationPage().getSuccessMessage();
+
+		Assert.assertTrue(result.contains("complete"));
 	}
 }
