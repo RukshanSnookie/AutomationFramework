@@ -7,6 +7,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +16,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -191,6 +193,21 @@ public abstract class BrowserUtility {
 //		WebElement element = driver.get().findElement(locator);
 		logger.info("Element found and returning the visible " + element.getText());
 		return element.getText();
+	}
+
+	protected boolean isElementVisible(By locator) {
+		logger.info("Finding element with the locator " + locator);
+		try {
+			System.out.println("Attempting to locate 'Add Address' button...");
+			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			return element.isDisplayed();
+
+		} catch (WebDriverException e) {
+			return false;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+
 	}
 
 	public List<String> getAllVisibleText(By locator) {

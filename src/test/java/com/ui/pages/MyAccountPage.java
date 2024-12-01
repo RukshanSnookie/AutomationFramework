@@ -10,7 +10,6 @@ import com.utility.BrowserUtility;
 
 public final class MyAccountPage extends BrowserUtility {
 
-	private static AddAddressesPage yourAddresses;
 	private static MyAddressesPage myAddresses;
 
 	private static final By USERNAME_LOCATOR = By.xpath("//a[@title=\"View my customer account\"]//span");
@@ -36,17 +35,22 @@ public final class MyAccountPage extends BrowserUtility {
 
 	public AddAddressesPage goToUserAddressPage() {
 
-//		try {
-		String newAddressElement = getVisibleText(ADD_ADDRESS_LOCATOR);
-		clickOn(ADD_ADDRESS_LOCATOR);
-		yourAddresses = new AddAddressesPage(getDriver());
-		return yourAddresses;
-//
-//		} catch (NoSuchElementException e) {
-//			clickOn(MY_ADDRESSES);
-//			myAddresses = new MyAddressesPage(getDriver());
-//			return myAddresses;
-//		}
+		try {
+			System.out.println(isElementVisible(ADD_ADDRESS_LOCATOR));
+			if (isElementVisible(ADD_ADDRESS_LOCATOR)) {
+				System.out.println("Add New Address Button is visible.");
+				clickOn(ADD_ADDRESS_LOCATOR);
+				return new AddAddressesPage(getDriver());
+			} else {
+				throw new NoSuchElementException("Add New Address Button not found on My Account page");
+			}
+
+		} catch (NoSuchElementException e) {
+			System.out.println("Navigating to My Addresses page due to missing Add Address button");
+			clickOn(MY_ADDRESSES);
+			myAddresses = new MyAddressesPage(getDriver());
+			return myAddresses.goToUserAddressPage();
+		}
 
 	}
 

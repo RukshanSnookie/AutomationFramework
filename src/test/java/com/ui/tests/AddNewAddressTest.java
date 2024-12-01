@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.ui.pages.AddAddressesPage;
 import com.ui.pages.MyAccountPage;
 import com.ui.pojo.AddressPOJO;
 import com.utility.FakeAddressUtility;
@@ -21,7 +22,8 @@ public class AddNewAddressTest extends TestBase {
 
 	@Test
 	public void addNewAddress() {
-		String newAddress = myAccountPage.goToUserAddressPage().saveAddress(addressPojo);
+		AddAddressesPage addAddressesPage = myAccountPage.goToUserAddressPage();
+		String newAddress = addAddressesPage.saveAddress(addressPojo);
 		Assert.assertEquals(newAddress, addressPojo.getAddressTitle().toUpperCase());
 	}
 
