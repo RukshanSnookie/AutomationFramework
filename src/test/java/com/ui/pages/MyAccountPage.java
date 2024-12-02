@@ -36,7 +36,6 @@ public final class MyAccountPage extends BrowserUtility {
 	public AddAddressesPage goToUserAddressPage() {
 
 		try {
-			System.out.println(isElementVisible(ADD_ADDRESS_LOCATOR));
 			if (isElementVisible(ADD_ADDRESS_LOCATOR)) {
 				System.out.println("Add New Address Button is visible.");
 				clickOn(ADD_ADDRESS_LOCATOR);

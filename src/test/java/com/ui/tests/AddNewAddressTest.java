@@ -21,9 +21,7 @@ public class AddNewAddressTest extends TestBase {
 
 	@Test
 	public void addNewAddress() {
-//		AddAddressesPage addAddressesPage = 
 		String newAddress = myAccountPage.goToUserAddressPage().saveAddress(addressPojo).getLastAddressHeading();
-//		addAddressesPage.saveAddress(addressPojo).getLastAddressHeading();
 		Assert.assertEquals(newAddress, addressPojo.getAddressTitle().toUpperCase());
 	}
 
