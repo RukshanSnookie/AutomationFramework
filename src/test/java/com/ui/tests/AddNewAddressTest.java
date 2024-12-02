@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.ui.pages.AddAddressesPage;
 import com.ui.pages.MyAccountPage;
 import com.ui.pojo.AddressPOJO;
 import com.utility.FakeAddressUtility;
