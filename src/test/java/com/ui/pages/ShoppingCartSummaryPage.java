@@ -5,12 +5,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.utility.BrowserUtility;
 
-public class ShoppingCartSummary extends BrowserUtility {
+public class ShoppingCartSummaryPage extends BrowserUtility {
 
 	private static final By PROCEED_TO_CHECKOUT_BUTTON_LOCATOR = By
 			.xpath("//p[contains(@class,\"cart_navigation clearfix\")]/a[@title=\"Proceed to checkout\"]");
 
-	public ShoppingCartSummary(WebDriver driver) {
+	public ShoppingCartSummaryPage(WebDriver driver) {
 		super(driver);
 	}
 

@@ -27,9 +27,9 @@ public class ProductDetailsPage extends BrowserUtility {
 		return new ProductDetailsPage(getDriver());
 	}
 
-	public ShoppingCartSummary proceedTOCheckout() {
+	public ShoppingCartSummaryPage proceedTOCheckout() {
 
 		clickOn(PROCEED_TO_CHECKOUT_BUTTON_LOCATOR);
-		return new ShoppingCartSummary(getDriver());
+		return new ShoppingCartSummaryPage(getDriver());
 	}
 }
