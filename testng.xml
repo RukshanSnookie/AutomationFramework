@@ -2,12 +2,12 @@
 
 <suite name="Automation Practice Test" parallel="methods" thread-count="4" verbose="1">
 	<test name="UI Automation">
-		<parameter name="browser" value="${browser}" />
-		//${browser}"
-		<parameter name="isLambdaTest" value="${isLambdaTest}" />
-		//${isLambdaTest}
-		<parameter name="isHeadless" value="${isHeadless}" />
-		//${isHeadless}
+		<parameter name="browser" value="chrome" />
+		<!-- ${browser}" -->
+		<parameter name="isLambdaTest" value="false" />
+		<!-- ${isLambdaTest} -->
+		<parameter name="isHeadless" value="true" />
+		<!-- ${isHeadless} -->
 		<classes>
 			<class name="com.ui.tests.LoginTest" />
 			<class name="com.ui.tests.InvalidLoginTest" />
