@@ -22,12 +22,12 @@ public class LoginTest extends TestBase {
 				"Rukshan Malinda");
 	}
 
-	@Test(description = "Veryfies if the valid user is able to log in", groups = { "e2e",
-			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginCSVTestDataProvider")
-	public void loginCSVTest(Users user) {
-		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
-				"Rukshan Malinda");
-	}
+//	@Test(description = "Veryfies if the valid user is able to log in", groups = { "e2e",
+//			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginCSVTestDataProvider")
+//	public void loginCSVTest(Users user) {
+//		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
+//				"Rukshan Malinda");
+//	}
 
 	@Test(description = "Veryfies if the valid user is able to log in", groups = { "e2e",
 			"sanity" }, dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginExcelTestDataProvider", retryAnalyzer = com.ui.listner.MyRretryAnalyser.class)
