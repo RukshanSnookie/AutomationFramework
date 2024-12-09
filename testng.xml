@@ -12,6 +12,7 @@
 			<class name="com.ui.tests.LoginTest" />
 			<class name="com.ui.tests.InvalidLoginTest" />
 			<class name="com.ui.tests.SearchProductTest" />
+			<class name="com.ui.tests.InvalidSearchTest" />
 			<class name="com.ui.tests.ProductCheckoutTest" />
 			<class name="com.ui.tests.AddNewAddressTest" />
 		</classes>
