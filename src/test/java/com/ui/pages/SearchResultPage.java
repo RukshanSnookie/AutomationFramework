@@ -36,4 +36,10 @@ public class SearchResultPage extends BrowserUtility {
 		return productDetailsPage;
 	}
 
+	public String getInvalidSearchMessage(String invalidSearchTerm) {
+		By invalidSearchTermLocator = By
+				.xpath("//div[@id=\"center_column\"]/p[contains(text(),\"" + invalidSearchTerm + "\")]");
+		return getVisibleText(invalidSearchTermLocator);
+	}
+
 }
