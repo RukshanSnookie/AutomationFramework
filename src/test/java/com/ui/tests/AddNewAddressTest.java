@@ -19,7 +19,7 @@ public class AddNewAddressTest extends TestBase {
 		addressPojo = FakeAddressUtility.getFakeAddress();
 	}
 
-	@Test
+	@Test(description = "Veryfies if the user can add new addresses", groups = { "e2e", "sanity" })
 	public void addNewAddress() {
 		String newAddress = myAccountPage.goToUserAddressPage().saveAddress(addressPojo).getLastAddressHeading();
 		Assert.assertEquals(newAddress, addressPojo.getAddressTitle().toUpperCase());
