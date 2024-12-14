@@ -15,7 +15,8 @@ public final class MyAccountPage extends BrowserUtility {
 	private static final By USERNAME_LOCATOR = By.xpath("//a[@title=\"View my customer account\"]//span");
 	private static final By SEARCH_TEXTBOX_LOCATOR = By.id("search_query_top");
 	private static final By ADD_ADDRESS_LOCATOR = By.xpath("//a[@title=\"Add my first address\"]");
-	private static final By MY_ADDRESSES = By.xpath("//a[@title=\"Addresses\"]");
+	private static final By MY_ADDRESSES_LOCATOR = By.xpath("//a[@title=\"Addresses\"]");
+	private static final By CONTACT_US_LOCATOR = By.xpath("//div[@id=\"contact-link\"]/a");
 
 	public MyAccountPage(WebDriver driver) {
 		super(driver);
@@ -46,11 +47,17 @@ public final class MyAccountPage extends BrowserUtility {
 
 		} catch (NoSuchElementException e) {
 			System.out.println("Navigating to My Addresses page due to missing Add Address button");
-			clickOn(MY_ADDRESSES);
+			clickOn(MY_ADDRESSES_LOCATOR);
 			myAddresses = new MyAddressesPage(getDriver());
 			return myAddresses.goToUserAddressPage();
 		}
 
+	}
+
+	public ContactUsPage goToContactUsPage() {
+		System.out.println("Navigating to contact us page!");
+		clickOn(CONTACT_US_LOCATOR);
+		return new ContactUsPage(getDriver());
 	}
 
 }
