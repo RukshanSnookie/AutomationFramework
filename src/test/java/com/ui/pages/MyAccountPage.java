@@ -17,6 +17,7 @@ public final class MyAccountPage extends BrowserUtility {
 	private static final By ADD_ADDRESS_LOCATOR = By.xpath("//a[@title=\"Add my first address\"]");
 	private static final By MY_ADDRESSES_LOCATOR = By.xpath("//a[@title=\"Addresses\"]");
 	private static final By CONTACT_US_LOCATOR = By.xpath("//div[@id=\"contact-link\"]/a");
+	private static final By SIGN_OUT_BUTTON_LOCATOR = By.className("logout");
 
 	public MyAccountPage(WebDriver driver) {
 		super(driver);
@@ -58,6 +59,12 @@ public final class MyAccountPage extends BrowserUtility {
 		System.out.println("Navigating to contact us page!");
 		clickOn(CONTACT_US_LOCATOR);
 		return new ContactUsPage(getDriver());
+	}
+
+	public LoginPage signOut() {
+		System.out.println("Sign out from the current logged-in account");
+		clickOn(SIGN_OUT_BUTTON_LOCATOR);
+		return new LoginPage(getDriver());
 	}
 
 }

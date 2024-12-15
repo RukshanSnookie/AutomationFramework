@@ -13,7 +13,7 @@ public class AddNewAddressTest extends TestBase {
 	private MyAccountPage myAccountPage;
 	private AddressPOJO addressPojo;
 
-	@BeforeMethod(description = "Valid first timme user logged into the system")
+	@BeforeMethod(description = "Valid first time user logged into the system")
 	public void login() {
 		myAccountPage = homePage.goToLoginPage().doLoginWith("divibap269@aleitar.com", "password");
 		addressPojo = FakeAddressUtility.getFakeAddress();

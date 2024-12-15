@@ -39,4 +39,8 @@ public final class LoginPage extends BrowserUtility {
 		return getVisibleText(LOGIN_ERROR_MESSAGE);
 	}
 
+	public boolean validateSignOut() {
+		return isElementVisible(SUBMIT_BUTTON_LOCATOR);
+	}
+
 }
