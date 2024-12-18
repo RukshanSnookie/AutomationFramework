@@ -24,8 +24,17 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+
+    - name: Set up ChromeDriver
+      uses: actions/checkout@v2
+    - name: Install ChromeDriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-chromedriver
+        sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+   
     - name: Running Automation tests with Maven
-      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
+      run: mvn test -X -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=true -Dlog.level=DEBUG
 
     - name: Upload Test Logs
       if: always()
