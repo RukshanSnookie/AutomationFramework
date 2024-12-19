@@ -15,7 +15,7 @@ public class ProductCheckoutTest extends TestBase {
 	private SearchResultPage searchResultPage;
 
 	@BeforeMethod(description = "User logs into the application and searches product")
-	public void settup() {
+	public void setup() {
 		searchResultPage = homePage.goToLoginPage().doLoginWith("divibap269@aleitar.com", "password")
 				.searchForProduct(SEARCH_TERM);
 	}
